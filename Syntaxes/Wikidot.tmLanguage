@@ -8,10 +8,6 @@
 	</array>
 	<key>firstLineMatch</key>
 	<string>(^\s*\+{1,}(.*)\s*$)|\[!-- wikidot --\]</string>
-	<key>foldingStartMarker</key>
-	<string>(&lt;(php|html|file|nowiki)&gt;|&lt;code(\s*.*)?&gt;)|/\*\*|\{\s*$</string>
-	<key>foldingStopMarker</key>
-	<string>(&lt;/(code|php|html|file|nowiki)&gt;)|\*\*/|^\s*\}</string>
 	<key>keyEquivalent</key>
 	<string>^~W</string>
 	<key>name</key>
