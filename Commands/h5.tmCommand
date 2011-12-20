@@ -13,7 +13,7 @@
 	// Also Works on lines that already have a heading applied
 	
 	$level    = '+';
-	$newLevel = str_repeat ( $level, 5); // Change this to alter the level being affected
+	$newLevel = str_repeat($level, 5); // Change this to alter the level being affected
 	$o        = array();
 
 	if (0) { //set to 1 for debugging
@@ -49,15 +49,23 @@
 	<string>line</string>
 	<key>input</key>
 	<string>selection</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>keyEquivalent</key>
 	<string>@5</string>
 	<key>name</key>
 	<string>h5</string>
-	<key>output</key>
-	<string>insertAsSnippet</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>snippet</string>
+	<key>outputLocation</key>
+	<string>replaceInput</string>
 	<key>scope</key>
 	<string>text.html.wikidot</string>
 	<key>uuid</key>
 	<string>E555920F-29E2-4731-9577-2B5DEDF51808</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>
