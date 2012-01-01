@@ -84,13 +84,69 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.heading.wikidot</string>
+					<string>punctuation.definition.heading.1.wikidot</string>
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>^\s*(\+{1,})(.*)$\n?</string>
+			<string>^\s*(\+{1}) (.*)$\n?</string>
 			<key>name</key>
-			<string>markup.heading.wikidot</string>
+			<string>markup.heading.1.wikidot</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.heading.2.wikidot</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>^\s*(\+{2}) (.*)$\n?</string>
+			<key>name</key>
+			<string>markup.heading.2.wikidot</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.heading.3.wikidot</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>^\s*(\+{3}) (.*)$\n?</string>
+			<key>name</key>
+			<string>markup.heading.3.wikidot</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.heading.4.wikidot</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>^\s*(\+{4}) (.*)$\n?</string>
+			<key>name</key>
+			<string>markup.heading.4.wikidot</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.heading.5.wikidot</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>^\s*(\+{5}) (.*)$\n?</string>
+			<key>name</key>
+			<string>markup.heading.5.wikidot</string>
 		</dict>
 		<dict>
 			<key>match</key>
