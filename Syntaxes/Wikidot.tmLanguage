@@ -7,7 +7,7 @@
 		<string>wikidot</string>
 	</array>
 	<key>firstLineMatch</key>
-	<string>(^\s*\+{1,}(.*)\s*$)|\[!-- wikidot --\]</string>
+	<string>(^\s*\+{1,}(.*)\s*$)|\[\!-- ?wikidot ?--\]</string>
 	<key>keyEquivalent</key>
 	<string>^~W</string>
 	<key>name</key>
