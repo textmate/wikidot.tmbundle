@@ -46,7 +46,8 @@ foreach ($aLines as $key =&gt; $line) {
 	}
 }
 echo implode("\n", $o);
-?&gt;</string>
+?&gt;
+</string>
 	<key>fallbackInput</key>
 	<string>line</string>
 	<key>input</key>
@@ -64,10 +65,10 @@ echo implode("\n", $o);
 	<key>outputLocation</key>
 	<string>replaceInput</string>
 	<key>scope</key>
-	<string>text.html.wikidot</string>
+	<string>text.html.wikidot -meta.disable-wikidot</string>
 	<key>uuid</key>
 	<string>4C841AC3-CB48-420A-A263-B9B7DB6D8167</string>
 	<key>version</key>
-	<integer>2</integer>
+	<string>2</string>
 </dict>
 </plist>
