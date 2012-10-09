@@ -7,7 +7,7 @@
 	<key>contactName</key>
 	<string>Timothy Bates</string>
 	<key>description</key>
-	<string>Implements the wiki syntax for the Wikidot service.</string>
+	<string>Implements the wiki syntax for the Wikidot web service.</string>
 	<key>mainMenu</key>
 	<dict>
 		<key>items</key>
@@ -61,8 +61,6 @@
 			</dict>
 			<key>BA507037-8A3C-42D0-A196-0131DDE715F4</key>
 			<dict>
-				<key>name</key>
-				<string>Document Structure</string>
 				<key>items</key>
 				<array>
 					<string>4187B367-2900-4810-8A99-4BABF4FB95B2</string>
@@ -84,6 +82,8 @@
 					<string>12616A60-17BA-4369-93EE-8770B4D62F5D</string>
 					<string>------------------------------------</string>
 				</array>
+				<key>name</key>
+				<string>Document Structure</string>
 			</dict>
 			<key>C7093A1F-2D6D-47DD-B382-AE6AEEB56AB0</key>
 			<dict>

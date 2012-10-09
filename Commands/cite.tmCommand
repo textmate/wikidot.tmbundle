@@ -36,9 +36,9 @@
 ', $bib);
 		foreach ($lines as $key =&gt; $line) {		
 			$pattern = '/^\: *([^ \:]+) *\:/';
-			$cite = preg_match($pattern, $line, $matches);
+			$cite = preg_match_all($pattern, $line, $matches);
 			if ($cite) {
-				$o[] = $matches[1];
+				$o = array_merge($o, $matches[1]);
 			}
 			$matches= array();
 		}
