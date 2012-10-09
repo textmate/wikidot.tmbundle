@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env php
+&lt;?php
+	// build a drop down for user to select citations
+	// Created: october.2012 Author: timothy.c.bates@gmail.com
+
+	if (1) { //set to 0 for debugging
+		$input = fread(STDIN, 1024);
+	}else{
+		$input = "chang cite
+
+[[bibliography]]
+: Chang2012: Chang, L., Connelly, B. S. and Geeza, A. A. (2012). Separating method
+: Chang2013: Chang, L., Connelly, B. S. and Geeza, A. A. (2012). Separating method
+: Chang2011: Chang, L., Connelly, B. S. and Geeza, A. A. (2012). Separating method
+: Chang2009: Chang, L., Connelly, B. S. and Geeza, A. A. (2012). Separating method
+[[/bibliography]]";
+	}
+
+	$o = "";
+
+	$pos1 = strpos($input, "[[bibliography]]");
+	$pos2 = strpos($input, "[[/bibliography]]");
+
+	if ($pos1 === false) {
+		$output = '[((bibcite ${1:label}))]';
+	} else {
+		$bib = substr($input, ($pos1), $pos2);
+		$lines = explode('
+', $bib);
+		foreach ($lines as $key =&gt; $line) {		
+			$pattern = '/^\: *([^ \:]+) *\:/';
+			$cite = preg_match($pattern, $line, $matches);
+			if ($cite) {
+				$o[] = $matches[1];
+			}
+			$matches= array();
+		}
+		$o = '[((bibcite ${1|' . implode(",", $o) . "|}))]";
+	}
+	echo $o; 
+	// [((bibcite ${1|cite1,cite2,cite3|}))]";
+
+?&gt;
+</string>
+	<key>input</key>
+	<string>document</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>name</key>
+	<string>Cite Reference [((bibcite label))]</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>snippet</string>
+	<key>outputLocation</key>
+	<string>atCaret</string>
+	<key>scope</key>
+	<string>text.html.wikidot</string>
+	<key>tabTrigger</key>
+	<string>cite</string>
+	<key>uuid</key>
+	<string>BADE2F78-B5CE-478D-9BEB-9529135D8511</string>
+	<key>version</key>
+	<integer>2</integer>
+</dict>
+</plist>
