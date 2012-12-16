@@ -9,14 +9,15 @@
 &lt;?php
 // creator: tim.bates@ed.ac.uk 
 // license = GPL
-// created 8 July 2009
+// created 12 Dec 2012
 // Purpose: Takes selected wikidot table like 
 /*
 
 || a   ||e  || u  || 
-|| b || elephant  || prissy   || 
-|| c   || minuet-in-g   || A   ||
- and returns it formatted nicely into columns thus:
+||  b     || elephant  || prissy   || 
+||    c   || minuet-in-g   || A   ||
+
+ and returns it formatted nicely into columns thusly:
 
 || a || e           || u      || 
 || b || elephant    || prissy || 
@@ -27,11 +28,10 @@
 // USEAGE notes: 
 // Set $debug to 1 to let play with it in a TM window
 
-// *********************************************************
-
-$debug = 0;
-$padWidth = 7; //sea change :-)
-$delimitter = "\|\|";
+$debug         = 0; // 0 to run properly
+$padWidth      = 7; // sea change :-)
+$delimitter    = "\|\|";
+$validRowMatch = "^||"; // starts with double pipe
 
 function getMaxWidths($aMatrix){
 	$o = array();
@@ -55,29 +55,32 @@ function getMaxWidths($aMatrix){
 }
 
 function stringTo2DArray($stringIn, $delimitter="||"){
-   // rows are lines
-   // strips all white space either side of the delimitter
-	$o = array();
-	$stringIn  = trim($stringIn);
-   $rows = explode("\n", $stringIn);
-	// print_r($rows);
-	$find = " *". $delimitter . " *";
-	// echo "find = \"$find\"\n";
+	// rows are lines
+	// strips all white space either side of the delimitter
+	$o        = array();
+	$stringIn = trim($stringIn);
+	$rows     = explode("\n", $stringIn);
+
+	$pattern     = '/^\|\s\s+/'; # white space after | at the beginning of a line
+	$replacement = '| ';
+	$rows        = preg_replace($pattern, $replacement, $rows);
+	$find = "/ *" . $delimitter . " */";
 
 	foreach ($rows as $key =&gt; $row) {
-	   $row  = trim($row);
-		// echo "row = $row\n";
-		$row = ereg_replace ( $find, $delimitter, $row);
+		$row = trim($row);
+		$row = preg_replace($find, $delimitter, $row);
 		$o[] = explode($delimitter, $row);
 	}
-    return $o;
+	return $o;
 }
+
 function stringToArray($stringIn, $delimitter=" "){
     // strips newlines and all white space
-    $stringIn  = ereg_replace("[ \t\n]{2,}", " ", $stringIn); //remove multiple spaces in case some present
+    $stringIn  = preg_replace("/[ \t\n]{2,}/", " ", $stringIn); //remove multiple spaces in case some present
     $stringIn  = trim($stringIn);
     return explode($delimitter, $stringIn);
 }
+
 function arrayToString($aVars, $suffix="1"){
     $sep = "$suffix ";
 	if ( !is_array($aVars) ) {
@@ -89,12 +92,11 @@ function arrayToString($aVars, $suffix="1"){
 }
 
 if ($debug) {
-	echo "&lt;pre&gt;";
 	$input ="|| a   ||e  || u  || 
-	|| b || elephant  || prissy   || 
-	|| c   || minuet-in-g   || A   ||
+||  b     || elephant  || prissy   || 
+||    c   || minuet-in-g   || A   ||
 ";
-	echo "&lt;font color=red&gt;$input &lt;/font&gt;&lt;br&gt;";
+	echo "$input\n\n\n";
 }else{
    $input = file_get_contents('php://stdin');
    // $input = $_ENV["TM_SELECTED_TEXT"];	
@@ -120,16 +122,25 @@ foreach ($aMatrix as $key =&gt; $row) {
 	$outStr.= trim( implode(" || ", $newRow) ) . "\n";
 }
 echo str_replace("|| ~", "||~ ", $outStr);
-?&gt;</string>
+?&gt;
+</string>
 	<key>input</key>
 	<string>selection</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>name</key>
 	<string>Reformat table to fixed width columns</string>
-	<key>output</key>
-	<string>replaceSelectedText</string>
+	<key>outputCaret</key>
+	<string>heuristic</string>
+	<key>outputFormat</key>
+	<string>text</string>
+	<key>outputLocation</key>
+	<string>replaceInput</string>
 	<key>scope</key>
 	<string>text.html.wikidot</string>
 	<key>uuid</key>
 	<string>CB48BB48-5B5B-4E57-8ED6-3BAC4E6DE42C</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>
