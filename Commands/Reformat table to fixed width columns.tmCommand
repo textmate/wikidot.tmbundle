@@ -61,8 +61,8 @@ function stringTo2DArray($stringIn, $delimitter="||"){
 	$stringIn = trim($stringIn);
 	$rows     = explode("\n", $stringIn);
 
-	$pattern     = '/^\|\s\s+/'; # white space after | at the beginning of a line
-	$replacement = '| ';
+	$pattern     = '/^\|\|\s\s+/'; # more than 1 space after || at the beginning of a line
+	$replacement = '|| ';
 	$rows        = preg_replace($pattern, $replacement, $rows);
 	$find = "/ *" . $delimitter . " */";
 
@@ -141,6 +141,6 @@ echo str_replace("|| ~", "||~ ", $outStr);
 	<key>uuid</key>
 	<string>CB48BB48-5B5B-4E57-8ED6-3BAC4E6DE42C</string>
 	<key>version</key>
-	<integer>2</integer>
+	<string>2</string>
 </dict>
 </plist>
