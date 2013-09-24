@@ -11,7 +11,7 @@
 	// Created: october.2012 Author: timothy.c.bates@gmail.com
 
 	if (1) { //set to 0 for debugging
-		$input = fread(STDIN, 1024);
+		$input = file_get_contents("php://stdin", "r");
 	}else{
 		$input = "chang cite
 
@@ -23,7 +23,7 @@
 [[/bibliography]]";
 	}
 
-	$o = "";
+	$o = array();
 
 	$pos1 = strpos($input, "[[bibliography]]");
 	$pos2 = strpos($input, "[[/bibliography]]");
@@ -45,8 +45,7 @@
 		$o = '[((bibcite ${1|' . implode(",", $o) . "|}))]";
 	}
 	echo $o; 
-	// [((bibcite ${1|cite1,cite2,cite3|}))]";
-
+	// generates a snippet like this: [((bibcite ${1|cite1,cite2,cite3|}))]";
 ?&gt;
 </string>
 	<key>input</key>
