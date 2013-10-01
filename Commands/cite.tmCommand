@@ -29,18 +29,18 @@
 	$pos2 = strpos($input, "[[/bibliography]]");
 
 	if ($pos1 === false) {
-		$output = '[((bibcite ${1:label}))]';
+		$o = '[((bibcite ${1:label}))]';
 	} else {
 		$bib = substr($input, ($pos1), $pos2);
 		$lines = explode('
 ', $bib);
 		foreach ($lines as $key =&gt; $line) {		
+			$matches= array();
 			$pattern = '/^\: *([^ \:]+) *\:/';
 			$cite = preg_match_all($pattern, $line, $matches);
 			if ($cite) {
 				$o = array_merge($o, $matches[1]);
 			}
-			$matches= array();
 		}
 		$o = '[((bibcite ${1|' . implode(",", $o) . "|}))]";
 	}
