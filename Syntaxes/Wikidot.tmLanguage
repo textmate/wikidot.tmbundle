@@ -814,10 +814,6 @@
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>include</key>
-					<string>source.php</string>
-				</dict>
-				<dict>
 					<key>begin</key>
 					<string>(^\s*)?(?=&lt;php&gt;)</string>
 					<key>beginCaptures</key>
@@ -829,7 +825,7 @@
 						</dict>
 					</dict>
 					<key>contentName</key>
-					<string>meta.embedded.php</string>
+					<string>meta.embedded.block.php</string>
 					<key>end</key>
 					<string>(?&lt;=&lt;/php&gt;)(?!&lt;php&gt;)(\s*$\n?)</string>
 					<key>endCaptures</key>
@@ -914,7 +910,7 @@
 							<array>
 								<dict>
 									<key>include</key>
-									<string>source.php</string>
+									<string>text.html.php#language</string>
 								</dict>
 							</array>
 						</dict>
